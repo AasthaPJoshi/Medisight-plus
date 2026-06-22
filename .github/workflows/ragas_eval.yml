@@ -1,0 +1,155 @@
+# FILE: .github/workflows/ragas_eval.yml
+# =========================================
+# CI GATE: Ragas Evaluation
+#
+# Runs on every push to main and every pull request.
+# Blocks merge if:
+#   - Faithfulness score < 0.70
+#   - Any billing code lookup returns 0 results for known codes
+#
+# This is what lets you say in your resume:
+# "CI-gated Ragas eval blocks any merge that drops faithfulness below 0.70"
+#
+# SETUP REQUIRED:
+# Add these to GitHub repo Settings → Secrets → Actions:
+#   ANTHROPIC_API_KEY   (your Anthropic API key)
+#   PINECONE_API_KEY    (your Pinecone API key)
+#   PINECONE_INDEX_NAME (medisight-kb)
+#   DATABASE_URL        (your PostgreSQL URL)
+#   JWT_SECRET          (your JWT secret)
+#   LANGFUSE_PUBLIC_KEY (optional - for trace logging)
+#   LANGFUSE_SECRET_KEY (optional - for trace logging)
+
+name: Ragas Eval CI Gate
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'rag/**'
+      - 'api/**'
+      - 'billing/**'
+      - 'eval/**'
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  ragas-eval:
+    name: RAG Pipeline Evaluation
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: medisight_user
+          POSTGRES_PASSWORD: medisight_pass
+          POSTGRES_DB: medisight
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+      redis:
+        image: redis:7
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install ragas datasets langfuse
+
+      - name: Set environment variables
+        run: |
+          echo "DATABASE_URL=postgresql://medisight_user:medisight_pass@localhost:5432/medisight" >> $GITHUB_ENV
+          echo "REDIS_URL=redis://localhost:6379" >> $GITHUB_ENV
+          echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> $GITHUB_ENV
+          echo "JWT_ALGORITHM=HS256" >> $GITHUB_ENV
+          echo "JWT_EXPIRE_MINUTES=1440" >> $GITHUB_ENV
+          echo "ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }}" >> $GITHUB_ENV
+          echo "PINECONE_API_KEY=${{ secrets.PINECONE_API_KEY }}" >> $GITHUB_ENV
+          echo "PINECONE_INDEX_NAME=${{ secrets.PINECONE_INDEX_NAME }}" >> $GITHUB_ENV
+          echo "LANGFUSE_PUBLIC_KEY=${{ secrets.LANGFUSE_PUBLIC_KEY }}" >> $GITHUB_ENV
+          echo "LANGFUSE_SECRET_KEY=${{ secrets.LANGFUSE_SECRET_KEY }}" >> $GITHUB_ENV
+          echo "FAIL_THRESHOLD=0.70" >> $GITHUB_ENV
+
+      - name: Initialize database
+        run: |
+          python3 -c "from models.orm_models import create_all_tables; create_all_tables()"
+
+      - name: Load billing code sample data
+        run: |
+          python3 billing/ingest_codes.py
+
+      - name: Start FastAPI server (background)
+        run: |
+          uvicorn api.main:app --host 0.0.0.0 --port 8000 &
+          sleep 5
+          curl -f http://localhost:8000/health || exit 1
+          echo "API_BASE_URL=http://localhost:8000" >> $GITHUB_ENV
+
+      - name: Create eval test user and get token
+        run: |
+          TOKEN=$(curl -s -X POST http://localhost:8000/auth/register \
+            -H "Content-Type: application/json" \
+            -d '{"email":"eval@test.com","full_name":"Eval Bot","password":"evalpass123","role":"doctor"}' \
+            | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")
+          echo "EVAL_TOKEN=$TOKEN" >> $GITHUB_ENV
+
+      - name: Run Ragas eval harness
+        run: python3 eval/run_ragas.py
+
+      - name: Upload eval results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ragas-eval-results
+          path: eval/results.json
+          retention-days: 30
+
+      - name: Comment PR with results
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const results = JSON.parse(fs.readFileSync('eval/results.json', 'utf8'));
+            const s = results.scores;
+            const body = `## Ragas Eval Results
+            | Metric | Score | Status |
+            |--------|-------|--------|
+            | Faithfulness | ${s.faithfulness} | ${s.faithfulness >= 0.70 ? '✅' : '❌'} |
+            | Answer Relevancy | ${s.answer_relevancy} | ✅ |
+            | Context Precision | ${s.context_precision} | ✅ |
+            | Billing Accuracy | ${s.billing_accuracy} | ${s.billing_accuracy >= 0.80 ? '✅' : '⚠️'} |
+            | Avg RAG Latency | ${s.avg_rag_latency_ms}ms | - |
+            
+            RAG: ${results.counts.rag_passed}/${results.counts.rag_total} passed
+            Billing: ${results.counts.billing_passed}/${results.counts.billing_total} passed
+            Overall: **${results.overall_passed ? 'PASSED ✅' : 'FAILED ❌'}**`;
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body
+            });

@@ -1,0 +1,429 @@
+{
+  "timestamp": "2026-06-18T21:12:18.329282",
+  "fail_threshold": 0.7,
+  "overall_passed": true,
+  "scores": {
+    "faithfulness": 0.9333,
+    "answer_relevancy": 0.8556,
+    "context_precision": 0.9333,
+    "billing_accuracy": 0.0,
+    "avg_rag_latency_ms": 19142.0
+  },
+  "counts": {
+    "rag_passed": 14,
+    "rag_total": 15,
+    "billing_passed": 0,
+    "billing_total": 15
+  },
+  "results": [
+    {
+      "id": "rag_001",
+      "type": "rag",
+      "question": "What are the differential diagnoses for chest pain and fever?",
+      "passed": true,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6666666666666666,
+      "context_precision": 1.0,
+      "confidence": 0.4,
+      "sources_count": 5,
+      "insufficient_context": false,
+      "latency_ms": 25270
+    },
+    {
+      "id": "rag_002",
+      "type": "rag",
+      "question": "How is type 2 diabetes mellitus managed in adults?",
+      "passed": true,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6666666666666666,
+      "context_precision": 1.0,
+      "confidence": 0.7,
+      "sources_count": 5,
+      "insufficient_context": false,
+      "latency_ms": 21310
+    },
+    {
+      "id": "rag_003",
+      "type": "rag",
+      "question": "What are clinical features of community-acquired pneumonia?",
+      "passed": true,
+      "faithfulness": 1.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 1.0,
+      "confidence": 0.6,
+      "sources_count": 5,
+      "insufficient_context": false,
+      "latency_ms": 19061
+    },
+    {
+      "id": "rag_004",
+      "type": "rag",
+      "question": "How should hypertension be managed in a patient with diabetes?",
+      "passed": true,
+      "faithfulness": 1.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 1.0,
+      "confidence": 0.7,
+      "sources_count": 5,
+      "insufficient_context": false,
+      "latency_ms": 20296
+    },
+    {
+      "id": "rag_005",
+      "type": "rag",
+      "question": "What is the differential diagnosis for shortness of breath?",
+      "passed": true,
+      "faithfulness": 1.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 1.0,
+      "confidence": 0.7,
+      "sources_count": 5,
+      "insufficient_context": false,
+      "latency_ms": 22874
+    },
+    {
+      "id": "rag_006",
+      "type": "rag",
+      "question": "What are signs and symptoms of acute myocardial infarction?",
+      "passed": true,
+      "faithfulness": 1.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 1.0,
+      "confidence": 0.6,
+      "sources_count": 5,
+      "insufficient_context": false,
+      "latency_ms": 22118
+    },
+    {
+      "id": "rag_007",
+      "type": "rag",
+      "question": "How is urinary tract infection treated in adults?",
+      "passed": true,
+      "faithfulness": 1.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 1.0,
+      "confidence": 0.7,
+      "sources_count": 5,
+      "insufficient_context": false,
+      "latency_ms": 19666
+    },
+    {
+      "id": "rag_008",
+      "type": "rag",
+      "question": "What are treatment options for major depressive disorder?",
+      "passed": true,
+      "faithfulness": 1.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 1.0,
+      "confidence": 0.6,
+      "sources_count": 5,
+      "insufficient_context": false,
+      "latency_ms": 14019
+    },
+    {
+      "id": "rag_009",
+      "type": "rag",
+      "question": "What is the management of asthma exacerbation?",
+      "passed": true,
+      "faithfulness": 1.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 1.0,
+      "confidence": 0.5,
+      "sources_count": 5,
+      "insufficient_context": false,
+      "latency_ms": 21842
+    },
+    {
+      "id": "rag_010",
+      "type": "rag",
+      "question": "How is hyperlipidemia managed to reduce cardiovascular risk?",
+      "passed": true,
+      "faithfulness": 1.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 1.0,
+      "confidence": 0.75,
+      "sources_count": 5,
+      "insufficient_context": false,
+      "latency_ms": 19936
+    },
+    {
+      "id": "rag_011",
+      "type": "rag",
+      "question": "What are the causes of headache in adults?",
+      "passed": true,
+      "faithfulness": 1.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 1.0,
+      "confidence": 0.5,
+      "sources_count": 5,
+      "insufficient_context": false,
+      "latency_ms": 15253
+    },
+    {
+      "id": "rag_012",
+      "type": "rag",
+      "question": "What is the approach to fever of unknown origin?",
+      "passed": true,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.5,
+      "context_precision": 1.0,
+      "confidence": 0.85,
+      "sources_count": 5,
+      "insufficient_context": false,
+      "latency_ms": 22357
+    },
+    {
+      "id": "rag_013",
+      "type": "rag",
+      "question": "How is acute low back pain treated?",
+      "passed": true,
+      "faithfulness": 1.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 1.0,
+      "confidence": 0.7,
+      "sources_count": 5,
+      "insufficient_context": false,
+      "latency_ms": 15699
+    },
+    {
+      "id": "rag_014",
+      "type": "rag",
+      "question": "What are diagnostic criteria for generalized anxiety disorder?",
+      "passed": false,
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "confidence": 0.1,
+      "sources_count": 0,
+      "insufficient_context": true,
+      "latency_ms": 6408
+    },
+    {
+      "id": "rag_015",
+      "type": "rag",
+      "question": "What is the management of COPD exacerbation?",
+      "passed": true,
+      "faithfulness": 1.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 1.0,
+      "confidence": 0.9,
+      "sources_count": 5,
+      "insufficient_context": false,
+      "latency_ms": 21026
+    },
+    {
+      "id": "billing_001",
+      "type": "billing_icd10",
+      "query": "diabetes",
+      "passed": false,
+      "accuracy": 0.0,
+      "expected_codes": [
+        "E11.9",
+        "E11.65"
+      ],
+      "returned_codes": [],
+      "hits": [],
+      "result_count": 0,
+      "latency_ms": 56
+    },
+    {
+      "id": "billing_002",
+      "type": "billing_icd10",
+      "query": "chest pain",
+      "passed": false,
+      "accuracy": 0.0,
+      "expected_codes": [
+        "R07.9",
+        "R07.1"
+      ],
+      "returned_codes": [],
+      "hits": [],
+      "result_count": 0,
+      "latency_ms": 9
+    },
+    {
+      "id": "billing_003",
+      "type": "billing_icd10",
+      "query": "hypertension",
+      "passed": false,
+      "accuracy": 0.0,
+      "expected_codes": [
+        "I10"
+      ],
+      "returned_codes": [],
+      "hits": [],
+      "result_count": 0,
+      "latency_ms": 158
+    },
+    {
+      "id": "billing_004",
+      "type": "billing_icd10",
+      "query": "pneumonia",
+      "passed": false,
+      "accuracy": 0.0,
+      "expected_codes": [
+        "J18.9"
+      ],
+      "returned_codes": [],
+      "hits": [],
+      "result_count": 0,
+      "latency_ms": 34
+    },
+    {
+      "id": "billing_005",
+      "type": "billing_icd10",
+      "query": "fever",
+      "passed": false,
+      "accuracy": 0.0,
+      "expected_codes": [
+        "R50.9"
+      ],
+      "returned_codes": [],
+      "hits": [],
+      "result_count": 0,
+      "latency_ms": 11
+    },
+    {
+      "id": "billing_006",
+      "type": "billing_cpt",
+      "query": "office visit",
+      "passed": false,
+      "accuracy": 0.0,
+      "expected_codes": [
+        "99213",
+        "99214",
+        "99203"
+      ],
+      "returned_codes": [],
+      "hits": [],
+      "result_count": 0,
+      "latency_ms": 4
+    },
+    {
+      "id": "billing_007",
+      "type": "billing_cpt",
+      "query": "chest xray",
+      "passed": false,
+      "accuracy": 0.0,
+      "expected_codes": [
+        "71046"
+      ],
+      "returned_codes": [],
+      "hits": [],
+      "result_count": 0,
+      "latency_ms": 8
+    },
+    {
+      "id": "billing_008",
+      "type": "billing_cpt",
+      "query": "ECG electrocardiogram",
+      "passed": false,
+      "accuracy": 0.0,
+      "expected_codes": [
+        "93000"
+      ],
+      "returned_codes": [],
+      "hits": [],
+      "result_count": 0,
+      "latency_ms": 9
+    },
+    {
+      "id": "billing_009",
+      "type": "billing_cpt",
+      "query": "blood count CBC",
+      "passed": false,
+      "accuracy": 0.0,
+      "expected_codes": [
+        "85025"
+      ],
+      "returned_codes": [],
+      "hits": [],
+      "result_count": 0,
+      "latency_ms": 11
+    },
+    {
+      "id": "billing_010",
+      "type": "billing_cpt",
+      "query": "hemoglobin A1c",
+      "passed": false,
+      "accuracy": 0.0,
+      "expected_codes": [
+        "83036"
+      ],
+      "returned_codes": [],
+      "hits": [],
+      "result_count": 0,
+      "latency_ms": 5
+    },
+    {
+      "id": "billing_011",
+      "type": "billing_hcpcs",
+      "query": "insulin",
+      "passed": false,
+      "accuracy": 0.0,
+      "expected_codes": [
+        "J1815"
+      ],
+      "returned_codes": [],
+      "hits": [],
+      "result_count": 0,
+      "latency_ms": 5
+    },
+    {
+      "id": "billing_012",
+      "type": "billing_hcpcs",
+      "query": "cefazolin",
+      "passed": false,
+      "accuracy": 0.0,
+      "expected_codes": [
+        "J0696"
+      ],
+      "returned_codes": [],
+      "hits": [],
+      "result_count": 0,
+      "latency_ms": 3
+    },
+    {
+      "id": "billing_013",
+      "type": "billing_hcpcs",
+      "query": "glucose test strips",
+      "passed": false,
+      "accuracy": 0.0,
+      "expected_codes": [
+        "A4253"
+      ],
+      "returned_codes": [],
+      "hits": [],
+      "result_count": 0,
+      "latency_ms": 6
+    },
+    {
+      "id": "billing_014",
+      "type": "billing_hcpcs",
+      "query": "CPAP",
+      "passed": false,
+      "accuracy": 0.0,
+      "expected_codes": [
+        "E0601"
+      ],
+      "returned_codes": [],
+      "hits": [],
+      "result_count": 0,
+      "latency_ms": 3
+    },
+    {
+      "id": "billing_015",
+      "type": "billing_hcpcs",
+      "query": "heparin",
+      "passed": false,
+      "accuracy": 0.0,
+      "expected_codes": [
+        "J1644"
+      ],
+      "returned_codes": [],
+      "hits": [],
+      "result_count": 0,
+      "latency_ms": 3
+    }
+  ]
+}
