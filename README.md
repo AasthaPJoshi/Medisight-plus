@@ -75,6 +75,17 @@ MediSight+ is a production-grade clinical AI platform that connects three roles 
 - Langfuse tracing on every RAG query: latency, confidence, token cost per node
 
 ---
+## Diagrams
+
+### Architecture
+![Architecture](diagrams/medisight_architecture_diagram.svg)
+
+### System Design
+![System Design](diagrams/medisight_system_design.svg)
+
+### Data Flow
+![Data Flow](diagrams/medisight_data_flow_diagram.svg)
+---
 
 ## Full tech stack
 
