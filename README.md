@@ -1,6 +1,6 @@
 # MediSight+
 
-**Clinical AI Platform** — From symptom logging to ICD-10/CPT/HCPCS billing intelligence, across three governed role-based portals.
+**Clinical AI Platform**: From symptom logging to ICD-10/CPT/HCPCS billing intelligence, across three governed role-based portals.
 
 [![CI](https://github.com/AasthaPJoshi/medisight-plus/actions/workflows/ragas_eval.yml/badge.svg)](https://github.com/AasthaPJoshi/medisight-plus/actions)
 [![Faithfulness](https://img.shields.io/badge/RAG%20faithfulness-0.93-00D4AA)](eval/results.json)
