@@ -8,7 +8,8 @@ import type { BillingEncounter, ICD10Code, CPTCode, HCPCSCode } from '../../lib/
 
 // ── BILLING DASHBOARD ─────────────────────────────────────────────────────────
 export function BillingDashboard() {
-  const { toast } = useToast();
+  const { toast }   = useToast();
+  const navigate    = useNavigate();
   
   const [encounters, setEncounters] = useState<BillingEncounter[]>([]);
   const [loading, setLoading]       = useState(true);
