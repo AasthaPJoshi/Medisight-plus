@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   LineChart, Line, BarChart, Bar,
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-  PieChart, Pie, Cell, Legend,
+  PieChart, Pie, Cell,
 } from 'recharts';
 import { Sidebar } from '../../components/Sidebar';
 import { useToast } from '../../components/Toast';
@@ -36,11 +36,8 @@ const AMBER  = '#F59E0B';
 const RED    = '#EF4444';
 const GREEN  = '#10B981';
 const PURPLE = '#8B5CF6';
-const NAVY   = '#1E3460';
 
-const RISK_COLORS: Record<string, string> = {
-  low: GREEN, medium: AMBER, high: RED, critical: '#DC2626',
-};
+
 
 const DENIAL_COLORS = [GREEN, AMBER, RED];
 
@@ -59,13 +56,6 @@ const ChartTooltip = ({ active, payload, label }: { active?: boolean; payload?: 
   );
 };
 
-// ── SECTION HEADER ────────────────────────────────────────────────────────────
-const Section = ({ title, sub }: { title: string; sub?: string }) => (
-  <div style={{ marginBottom: 16, marginTop: 8 }}>
-    <div style={{ fontSize: 12, fontWeight: 700, color: '#F1F5F9', textTransform: 'uppercase', letterSpacing: '0.6px' }}>{title}</div>
-    {sub && <div style={{ fontSize: 12, color: '#64748B', marginTop: 2 }}>{sub}</div>}
-  </div>
-);
 
 // ── MAIN COMPONENT ────────────────────────────────────────────────────────────
 export default function AnalyticsDashboard() {

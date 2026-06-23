@@ -14,7 +14,7 @@ import { CodeCard } from '../../components/CodeCard';
 import { SeverityPulse } from '../../components/SeverityPulse';
 import { useToast } from '../../components/Toast';
 import { doctorAPI, ragAPI } from '../../lib/api';
-import type { Patient, SymptomLog, ClinicalNote, RAGResult, NoteAnalysisResult } from '../../lib/types';
+import type { Patient, SymptomLog, RAGResult, NoteAnalysisResult } from '../../lib/types';
 
 export default function EncounterWorkspace() {
   const { toast }   = useToast();

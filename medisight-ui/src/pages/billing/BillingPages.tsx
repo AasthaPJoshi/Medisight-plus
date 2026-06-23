@@ -115,7 +115,7 @@ export function BillingDashboard() {
 // ── BILLING ENCOUNTERS (approval workspace) ───────────────────────────────────
 export function BillingEncounters() {
   const { toast } = useToast();
-  const location  = useNavigate();
+  const navigate  = useNavigate();
   const [encounters, setEncounters]     = useState<BillingEncounter[]>([]);
   const [selected, setSelected]         = useState<BillingEncounter | null>(null);
   const [approving, setApproving]       = useState(false);
