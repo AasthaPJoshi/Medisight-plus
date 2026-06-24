@@ -41,7 +41,7 @@ MediSight+ is a production-grade clinical AI platform that connects three roles 
 - Plain-English visit summaries and follow-up instructions from doctor
 - Profile management: allergies, medications, blood type
 
-https://github.com/user-attachments/assets/8f8afd83-e956-4b23-818c-83f7cb77acfe
+
 
 ### 👨‍⚕️ Clinical portal
 - **LangGraph 5-node RAG pipeline** querying 450 Pinecone vectors + BM25 keyword index
@@ -51,6 +51,8 @@ https://github.com/user-attachments/assets/8f8afd83-e956-4b23-818c-83f7cb77acfe
 - Three-panel encounter workspace: patient context · note editor · AI assistant
 - **Lock workflow**: doctor locks note → immutable record → triggers billing AI automatically
 - **Analytics dashboard**: 6 Recharts charts, patient risk scores (0–100), Ragas eval scores
+
+https://github.com/user-attachments/assets/8f8afd83-e956-4b23-818c-83f7cb77acfe
 
 ### 💼 Billing portal
 - AI-suggested **ICD-10-CM**, **CPT/MPFS**, and **HCPCS Level II** codes from locked note text
