@@ -60,8 +60,7 @@ https://github.com/user-attachments/assets/8f8afd83-e956-4b23-818c-83f7cb77acfe
 - Full code lookup search across all three CMS code sets
 - Parsed clinical note structured extraction (diagnosis, procedures, drugs)
 
-
-
+https://github.com/user-attachments/assets/45444c14-848a-40c6-8d27-d9a28002cd88
 
 
 ---
