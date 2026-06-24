@@ -14,7 +14,7 @@
 
 ## What it is
 
-MediSight+ is a production-grade clinical AI platform that connects three roles — patients, clinicians, and billing staff — through a single governed system. Patients log symptoms. Doctors query a 5-node LangGraph RAG pipeline over 417 PubMed abstracts for AI-assisted differential diagnoses. Locking a clinical note automatically triggers billing AI that extracts ICD-10, CPT, and HCPCS codes from the note text and flags denial risk before claim submission.
+MediSight+ is a production-grade clinical AI platform that connects three roles — patients, clinicians, and billing staff — through a single governed system. Patients log symptoms. Doctors query a 5-node LangGraph RAG pipeline over 417 PubMed abstracts for AI-assisted differential diagnoses. Locking a clinical note automatically triggers billing AI that extracts ICD-10, CPT, and HCPCS codes from the note text and flags denial risk before claim submission. 
 
 **Live demo:** [medisight-plus.vercel.app](https://medisight-plus.vercel.app) · **API:** [54.234.98.87/docs](http://54.234.98.87/docs)
 
