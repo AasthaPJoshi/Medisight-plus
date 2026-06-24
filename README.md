@@ -41,6 +41,8 @@ MediSight+ is a production-grade clinical AI platform that connects three roles 
 - Plain-English visit summaries and follow-up instructions from doctor
 - Profile management: allergies, medications, blood type
 
+https://github.com/user-attachments/assets/8f8afd83-e956-4b23-818c-83f7cb77acfe
+
 ### 👨‍⚕️ Clinical portal
 - **LangGraph 5-node RAG pipeline** querying 450 Pinecone vectors + BM25 keyword index
 - N1 classify → N2 expand → N3 BM25+Pinecone retrieve → N4 sufficiency judge → N5 generate
@@ -57,6 +59,10 @@ MediSight+ is a production-grade clinical AI platform that connects three roles 
 - Billing encounter approval workflow with **audit log** on every action
 - Full code lookup search across all three CMS code sets
 - Parsed clinical note structured extraction (diagnosis, procedures, drugs)
+
+
+
+
 
 ---
 
